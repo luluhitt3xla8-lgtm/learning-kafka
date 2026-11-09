@@ -1,0 +1,1587 @@
+version: 2.1
+
+jobs:
+  donut_006604_prev:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Compute digest C
+          command: |
+            mkdir -p /tmp/e1
+            set +o pipefail 2>/dev/null; yes payload | head -c 659766 > /tmp/e1/canyonNorthHawkMolten; true
+            echo "committed: /tmp/e1/canyonNorthHawkMolten ($(wc -c </tmp/e1/canyonNorthHawkMolten) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - 'canyonNorthHawkMolten'
+  anothr-run:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Union handoff
+          command: |
+            b=$(wc -c < /tmp/e1/canyonNorthHawkMolten 2>/dev/null); printf '0x%x\n' $b || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 3 --quiet --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: zcat blobs-tray.tgz | tar xvf -
+      - run:
+          command: nice -n 0 ./diff-final
+  private_lower:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: anyway
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; getent passwd | cut -d: -f1 | sort | uniq -ic; true ; } > /tmp/e1/PDF-FTP
+            echo "committed: /tmp/e1/PDF-FTP ($(wc -c </tmp/e1/PDF-FTP) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - 'PDF-FTP'
+  VerifyStaging:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Union handoff
+          command: |
+            b=$(wc -c < /tmp/e1/PDF-FTP 2>/dev/null); printf '0x%x\n' $b || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 3 --quiet --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: zcat blobs-tray.tgz | tar xvf -
+      - run:
+          command: nice -n 0 ./diff-final
+  b:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Then scan the crash reports
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; echo 'buy more coffee' | cut -c1-4; true ; } > /tmp/e1/115.97.150.69
+            echo "committed: /tmp/e1/115.97.150.69 ($(wc -c </tmp/e1/115.97.150.69) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - '115.97.150.69'
+  break-prod:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Union handoff
+          command: |
+            b=$(wc -c < /tmp/e1/115.97.150.69 2>/dev/null); printf '0x%x\n' $b || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 3 --quiet --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: zcat blobs-tray.tgz | tar xvf -
+      - run:
+          command: nice -n 0 ./diff-final
+  M:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: W8 helpdesk summary
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; find /usr/lib -name os-release -size 0 2>/dev/null | xargs ls -ld; true ; } > /tmp/e1/drafte186
+            echo "committed: /tmp/e1/drafte186 ($(wc -c </tmp/e1/drafte186) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - 'drafte186'
+  build:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Union handoff
+          command: |
+            b=$(wc -c < /tmp/e1/drafte186 2>/dev/null); printf '0x%x\n' $b || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 3 --quiet --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: zcat blobs-tray.tgz | tar xvf -
+      - run:
+          command: nice -n 0 ./diff-final
+  q-protocol:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Review the budget variance before close
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; ls -1 -Q -X --hide="*.gz" . | fmt -w 60; true ; } > /tmp/e1/A9ksE8Y4U
+            echo "committed: /tmp/e1/A9ksE8Y4U ($(wc -c </tmp/e1/A9ksE8Y4U) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - 'A9ksE8Y4U'
+  fix-metrics:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Union handoff
+          command: |
+            b=$(wc -c < /tmp/e1/A9ksE8Y4U 2>/dev/null); printf '0x%x\n' $b || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 3 --quiet --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: zcat blobs-tray.tgz | tar xvf -
+      - run:
+          command: nice -n 0 ./diff-final
+  sphereLink_complex:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: run integration suite take 7
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; grep -rI if /etc 2> /dev/null | wc -l; true ; } > /tmp/e1/fnv_eb24b1c7
+            echo "committed: /tmp/e1/fnv_eb24b1c7 ($(wc -c </tmp/e1/fnv_eb24b1c7) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - 'fnv_eb24b1c7'
+  validate-nightly-docker-image:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Union handoff
+          command: |
+            b=$(wc -c < /tmp/e1/fnv_eb24b1c7 2>/dev/null); printf '0x%x\n' $b || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 3 --quiet --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: zcat blobs-tray.tgz | tar xvf -
+      - run:
+          command: nice -n 0 ./diff-final
+  salt_:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Toronto first then region two
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; echo "access granted" | tr -s ' '; true ; } > /tmp/e1/be4m.h4rb0r
+            echo "committed: /tmp/e1/be4m.h4rb0r ($(wc -c </tmp/e1/be4m.h4rb0r) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - 'be4m.h4rb0r'
+  nov17-ship:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Union handoff
+          command: |
+            b=$(wc -c < /tmp/e1/be4m.h4rb0r 2>/dev/null); printf '0x%x\n' $b || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 3 --quiet --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: zcat blobs-tray.tgz | tar xvf -
+      - run:
+          command: nice -n 0 ./diff-final
+  frank-dst:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: doReloadNightlyBuild
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; gzip -c /etc/hosts >"/tmp/a5.gz" && zcmp /etc/hosts "/tmp/a5.gz" && echo same; true ; } > /tmp/e1/47866d9f9a9883bc82
+            echo "committed: /tmp/e1/47866d9f9a9883bc82 ($(wc -c </tmp/e1/47866d9f9a9883bc82) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - '47866d9f9a9883bc82'
+  APP-449:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Union handoff
+          command: |
+            b=$(wc -c < /tmp/e1/47866d9f9a9883bc82 2>/dev/null); printf '0x%x\n' $b || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 3 --quiet --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: zcat blobs-tray.tgz | tar xvf -
+      - run:
+          command: nice -n 0 ./diff-final
+  Price2SVM:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Research side preview
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; ls -shcg /dev/std* | tr -s ' ' | cut -d' ' -f5-; true ; } > /tmp/e1/71c5ec58-fc7a-48b2-a647
+            echo "committed: /tmp/e1/71c5ec58-fc7a-48b2-a647 ($(wc -c </tmp/e1/71c5ec58-fc7a-48b2-a647) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - '71c5ec58-fc7a-48b2-a647'
+  green-light-go:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Union handoff
+          command: |
+            b=$(wc -c < /tmp/e1/71c5ec58-fc7a-48b2-a647 2>/dev/null); printf '0x%x\n' $b || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 3 --quiet --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: zcat blobs-tray.tgz | tar xvf -
+      - run:
+          command: nice -n 0 ./diff-final
+  SpriteCursorDualTrace:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Despawn Spawn Points
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; printf '%s\n' 'back in 5'|xargs; true ; } > /tmp/e1/cloudadmin
+            echo "committed: /tmp/e1/cloudadmin ($(wc -c </tmp/e1/cloudadmin) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - 'cloudadmin'
+  rl-01:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Union handoff
+          command: |
+            b=$(wc -c < /tmp/e1/cloudadmin 2>/dev/null); printf '0x%x\n' $b || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 3 --quiet --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: zcat blobs-tray.tgz | tar xvf -
+      - run:
+          command: nice -n 0 ./diff-final
+  chessc032033:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: and so on
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; printf 'queue\t94\norange\t73\nproducts\t43\nwarning\t28\n' > "/var/tmp/tokenlizard.tsv" && awk -F'\t' '{s+=$2} END {print s}' "/var/tmp/tokenlizard.tsv"; true ; } > /tmp/e1/bacf0c02-85a4-6197-28f3
+            echo "committed: /tmp/e1/bacf0c02-85a4-6197-28f3 ($(wc -c </tmp/e1/bacf0c02-85a4-6197-28f3) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - 'bacf0c02-85a4-6197-28f3'
+  Run_Pipeline5:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Union handoff
+          command: |
+            b=$(wc -c < /tmp/e1/bacf0c02-85a4-6197-28f3 2>/dev/null); printf '0x%x\n' $b || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 3 --quiet --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: zcat blobs-tray.tgz | tar xvf -
+      - run:
+          command: nice -n 0 ./diff-final
+  cherry-trace-scope:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Renewal through the proxy
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; touch "/dev/shm/hawk-category.dat" && readlink -f "/dev/shm/hawk-category.dat"; true ; } > /tmp/e1/stage_b11a082e
+            echo "committed: /tmp/e1/stage_b11a082e ($(wc -c </tmp/e1/stage_b11a082e) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - 'stage_b11a082e'
+  verify:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Union handoff
+          command: |
+            b=$(wc -c < /tmp/e1/stage_b11a082e 2>/dev/null); printf '0x%x\n' $b || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 3 --quiet --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: zcat blobs-tray.tgz | tar xvf -
+      - run:
+          command: nice -n 0 ./diff-final
+  removeAuthor:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Compute digest C
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; ls -d /mnt | tac; true ; } > /tmp/e1/SHARD_MOOR_WALLET_ENGINE
+            echo "committed: /tmp/e1/SHARD_MOOR_WALLET_ENGINE ($(wc -c </tmp/e1/SHARD_MOOR_WALLET_ENGINE) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - 'SHARD_MOOR_WALLET_ENGINE'
+  helios-rc:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Union handoff
+          command: |
+            b=$(wc -c < /tmp/e1/SHARD_MOOR_WALLET_ENGINE 2>/dev/null); printf '0x%x\n' $b || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 3 --quiet --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: zcat blobs-tray.tgz | tar xvf -
+      - run:
+          command: nice -n 0 ./diff-final
+  t-odd:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Security fingerprint step
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; echo 'the answer is 42' | tr ' ' '\n' | awk '{print toupper(substr($0,1,1)) substr($0,2)}' | paste -sd ' '; true ; } > /tmp/e1/20250822
+            echo "committed: /tmp/e1/20250822 ($(wc -c </tmp/e1/20250822) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - '20250822'
+  hotfix-9664:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Union handoff
+          command: |
+            b=$(wc -c < /tmp/e1/20250822 2>/dev/null); printf '0x%x\n' $b || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 3 --quiet --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: zcat blobs-tray.tgz | tar xvf -
+      - run:
+          command: nice -n 0 ./diff-final
+  save_release_query_step:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Hold short of the help center
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; touch /tmp/drawer.tmp && mv -v /tmp/drawer.tmp "/tmp/slice-refund.bak"; true ; } > /tmp/e1/redParserPulseLepton
+            echo "committed: /tmp/e1/redParserPulseLepton ($(wc -c </tmp/e1/redParserPulseLepton) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - 'redParserPulseLepton'
+  validate-end-to-end-artifact-bundle:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Union handoff
+          command: |
+            b=$(wc -c < /tmp/e1/redParserPulseLepton 2>/dev/null); printf '0x%x\n' $b || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 3 --quiet --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: zcat blobs-tray.tgz | tar xvf -
+      - run:
+          command: nice -n 0 ./diff-final
+  test_toggle_canvas:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: compress jpg
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; mkdir -p "/var/tmp/bun" && head -c 6108 /dev/urandom >"/var/tmp/bun"/blob && du -sh "/var/tmp/bun"; true ; } > /tmp/e1/iter2_ab27
+            echo "committed: /tmp/e1/iter2_ab27 ($(wc -c </tmp/e1/iter2_ab27) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - 'iter2_ab27'
+  ship-it:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Union handoff
+          command: |
+            b=$(wc -c < /tmp/e1/iter2_ab27 2>/dev/null); printf '0x%x\n' $b || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 3 --quiet --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: zcat blobs-tray.tgz | tar xvf -
+      - run:
+          command: nice -n 0 ./diff-final
+  hi-LT-1:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Let us swipe the cart icon
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; printf '%s\n' 'starting now' | od -c | head -2; true ; } > /tmp/e1/iter-5w
+            echo "committed: /tmp/e1/iter-5w ($(wc -c </tmp/e1/iter-5w) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - 'iter-5w'
+  perseus-alpha:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Union handoff
+          command: |
+            b=$(wc -c < /tmp/e1/iter-5w 2>/dev/null); printf '0x%x\n' $b || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 3 --quiet --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: zcat blobs-tray.tgz | tar xvf -
+      - run:
+          command: nice -n 0 ./diff-final
+  bastion-uat-73:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Exercise Amber Pebble
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; diff <(echo 'ok') <(echo 'copying files') || echo different; true ; } > /tmp/e1/canvas_frame
+            echo "committed: /tmp/e1/canvas_frame ($(wc -c </tmp/e1/canvas_frame) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - 'canvas_frame'
+  zed-ship:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Union handoff
+          command: |
+            b=$(wc -c < /tmp/e1/canvas_frame 2>/dev/null); printf '0x%x\n' $b || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 3 --quiet --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: zcat blobs-tray.tgz | tar xvf -
+      - run:
+          command: nice -n 0 ./diff-final
+  DD-EOJ-MAX:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Unleash the budget variance
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; dd if=/dev/zero of="/tmp/warningRound-2022-04-19.conf" bs=1K count=8 status=none && ls -l "/tmp/warningRound-2022-04-19.conf"; true ; } > /tmp/e1/MVI-57877
+            echo "committed: /tmp/e1/MVI-57877 ($(wc -c </tmp/e1/MVI-57877) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - 'MVI-57877'
+  oct28-canary:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Union handoff
+          command: |
+            b=$(wc -c < /tmp/e1/MVI-57877 2>/dev/null); printf '0x%x\n' $b || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 3 --quiet --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: zcat blobs-tray.tgz | tar xvf -
+      - run:
+          command: nice -n 0 ./diff-final
+  realHank:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Storm the indexes
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; if [ -L /bin ]; then echo 'it is there'; elif [ -e /tmp ]; then echo maybe; else echo 'nope'; fi; true ; } > /tmp/e1/Glint
+            echo "committed: /tmp/e1/Glint ($(wc -c </tmp/e1/Glint) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - 'Glint'
+  intergration-58:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Union handoff
+          command: |
+            b=$(wc -c < /tmp/e1/Glint 2>/dev/null); printf '0x%x\n' $b || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 3 --quiet --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: zcat blobs-tray.tgz | tar xvf -
+      - run:
+          command: nice -n 0 ./diff-final
+  asset_decrypt:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: The centrifuge rotor is fine
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; grep -R -w -I bash /etc 2>/dev/null | cut -d: -f1 | sort -u; true ; } > /tmp/e1/PO53927
+            echo "committed: /tmp/e1/PO53927 ($(wc -c </tmp/e1/PO53927) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - 'PO53927'
+  dp-01:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Union handoff
+          command: |
+            b=$(wc -c < /tmp/e1/PO53927 2>/dev/null); printf '0x%x\n' $b || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 3 --quiet --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: zcat blobs-tray.tgz | tar xvf -
+      - run:
+          command: nice -n 0 ./diff-final
+  fE:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Load the barcodes on dock C
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; find /tmp -maxdepth 1 -type d -writable -print | nl; true ; } > /tmp/e1/1b19921f9de680adcf552863639c9d0ea85
+            echo "committed: /tmp/e1/1b19921f9de680adcf552863639c9d0ea85 ($(wc -c </tmp/e1/1b19921f9de680adcf552863639c9d0ea85) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - '1b19921f9de680adcf552863639c9d0ea85'
+  v4-alpha3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Union handoff
+          command: |
+            b=$(wc -c < /tmp/e1/1b19921f9de680adcf552863639c9d0ea85 2>/dev/null); printf '0x%x\n' $b || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 3 --quiet --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: zcat blobs-tray.tgz | tar xvf -
+      - run:
+          command: nice -n 0 ./diff-final
+  VirtualFieldRenderer:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Approve the journal entries fy26
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; total=(tiger frog koala whale cat seal); echo "${total[@]^^}"; true ; } > /tmp/e1/Ae1t
+            echo "committed: /tmp/e1/Ae1t ($(wc -c </tmp/e1/Ae1t) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - 'Ae1t'
+  canary-v4:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Union handoff
+          command: |
+            b=$(wc -c < /tmp/e1/Ae1t 2>/dev/null); printf '0x%x\n' $b || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 3 --quiet --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: zcat blobs-tray.tgz | tar xvf -
+      - run:
+          command: nice -n 0 ./diff-final
+  recordCompareCb:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Scold the bootloader
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; touch -d 'yesterday' "${TMPDIR:-/tmp}/owl-about-crow.marker" && ls -l --time-style=long-iso "${TMPDIR:-/tmp}/owl-about-crow.marker"; true ; } > /tmp/e1/e9d85.6912.1b4
+            echo "committed: /tmp/e1/e9d85.6912.1b4 ($(wc -c </tmp/e1/e9d85.6912.1b4) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - 'e9d85.6912.1b4'
+  verify-quick-test-matrix:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Union handoff
+          command: |
+            b=$(wc -c < /tmp/e1/e9d85.6912.1b4 2>/dev/null); printf '0x%x\n' $b || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 3 --quiet --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: zcat blobs-tray.tgz | tar xvf -
+      - run:
+          command: nice -n 0 ./diff-final
+  nav-price-rounded:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Compute digest C
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; ls --directory -S -1 ~ | awk '{print length, $0}' | sort -n | tail -n 3; true ; } > /tmp/e1/9ddfa3cb-5ce6-6d97
+            echo "committed: /tmp/e1/9ddfa3cb-5ce6-6d97 ($(wc -c </tmp/e1/9ddfa3cb-5ce6-6d97) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - '9ddfa3cb-5ce6-6d97'
+  intergration:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Union handoff
+          command: |
+            b=$(wc -c < /tmp/e1/9ddfa3cb-5ce6-6d97 2>/dev/null); printf '0x%x\n' $b || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 3 --quiet --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: zcat blobs-tray.tgz | tar xvf -
+      - run:
+          command: nice -n 0 ./diff-final
+  Sidebar:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Every 30 min pause the queue
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; find /run -name \*lock\* -exec stat -c %F "{}" \; 2>/dev/null | wc -l; true ; } > /tmp/e1/6d3aa051860
+            echo "committed: /tmp/e1/6d3aa051860 ($(wc -c </tmp/e1/6d3aa051860) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - '6d3aa051860'
+  anothr-run-71:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Union handoff
+          command: |
+            b=$(wc -c < /tmp/e1/6d3aa051860 2>/dev/null); printf '0x%x\n' $b || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 3 --quiet --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: zcat blobs-tray.tgz | tar xvf -
+      - run:
+          command: nice -n 0 ./diff-final
+  v9:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Onboard backend onto rigging
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; for p in {1..8..2} ; do printf '%d %d\n' $p $((p * 3)); done | wc -l; true ; } > /tmp/e1/otter833
+            echo "committed: /tmp/e1/otter833 ($(wc -c </tmp/e1/otter833) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - 'otter833'
+  rip-it:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Union handoff
+          command: |
+            b=$(wc -c < /tmp/e1/otter833 2>/dev/null); printf '0x%x\n' $b || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 3 --quiet --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: zcat blobs-tray.tgz | tar xvf -
+      - run:
+          command: nice -n 0 ./diff-final
+  lang-el:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Expand because it is slow
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; type kill; true ; } > /tmp/e1/c4751700-e251
+            echo "committed: /tmp/e1/c4751700-e251 ($(wc -c </tmp/e1/c4751700-e251) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - 'c4751700-e251'
+  do-the-thing:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Union handoff
+          command: |
+            b=$(wc -c < /tmp/e1/c4751700-e251 2>/dev/null); printf '0x%x\n' $b || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 3 --quiet --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: zcat blobs-tray.tgz | tar xvf -
+      - run:
+          command: nice -n 0 ./diff-final
+  nav-servo:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Rolling back the sidecar hold on
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; mkfifo "/tmp/error_v2.bak" && ls -l "/tmp/error_v2.bak" && rm "/tmp/error_v2.bak"; true ; } > /tmp/e1/TENSOR_STOCK
+            echo "committed: /tmp/e1/TENSOR_STOCK ($(wc -c </tmp/e1/TENSOR_STOCK) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - 'TENSOR_STOCK'
+  verify-partial-release-candidate:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Union handoff
+          command: |
+            b=$(wc -c < /tmp/e1/TENSOR_STOCK 2>/dev/null); printf '0x%x\n' $b || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 3 --quiet --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: zcat blobs-tray.tgz | tar xvf -
+      - run:
+          command: nice -n 0 ./diff-final
+  Unregister-RatioInfo:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: later
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; echo "a b c" | xargs; true ; } > /tmp/e1/20251127_132638
+            echo "committed: /tmp/e1/20251127_132638 ($(wc -c </tmp/e1/20251127_132638) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - '20251127_132638'
+  vega-v2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Union handoff
+          command: |
+            b=$(wc -c < /tmp/e1/20251127_132638 2>/dev/null); printf '0x%x\n' $b || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 3 --quiet --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore inputs
+          command: zcat blobs-tray.tgz | tar xvf -
+      - run:
+          command: nice -n 0 ./diff-final
+
+  skipEmailTaxAlias:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: 27 attest user sessions
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; for i in {1..5}; do echo $RANDOM; done | sort -un | awk '{print $1 * 2}' | tail -8; true ; } > /tmp/e1/PDF-FTP
+            echo "committed: /tmp/e1/PDF-FTP ($(wc -c </tmp/e1/PDF-FTP) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - 'PDF-FTP'
+  closedInt:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Bonk the drift monitor
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; ls /usr/bin|nl -w2 -s". "|wc -w; true ; } > /tmp/e1/redParserPulseLepton
+            echo "committed: /tmp/e1/redParserPulseLepton ($(wc -c </tmp/e1/redParserPulseLepton) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - 'redParserPulseLepton'
+  mutantSys:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: T0 alert
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; set -- sales test frog; echo $#; true ; } > /tmp/e1/MVI-57877
+            echo "committed: /tmp/e1/MVI-57877 ($(wc -c </tmp/e1/MVI-57877) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - 'MVI-57877'
+  inactiveYes:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Join TODO
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; sed -n 's/^PRETTY_NAME="\(.*\)"/\1/p' /etc/os-release | sort -n | tail --lines=3; true ; } > /tmp/e1/71c5ec58-fc7a-48b2-a647
+            echo "committed: /tmp/e1/71c5ec58-fc7a-48b2-a647 ($(wc -c </tmp/e1/71c5ec58-fc7a-48b2-a647) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - '71c5ec58-fc7a-48b2-a647'
+  signalInKbps:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: step two
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; echo 'one, two, three'|sed 's@one@guide@I'; true ; } > /tmp/e1/20251127_132638
+            echo "committed: /tmp/e1/20251127_132638 ($(wc -c </tmp/e1/20251127_132638) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - '20251127_132638'
+  teardownReleaseTotal:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Cancel sanity check
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; find /usr/share -maxdepth 2 -name '*.xml' -exec basename {} \; 2> /dev/null|sort -r; true ; } > /tmp/e1/115.97.150.69
+            echo "committed: /tmp/e1/115.97.150.69 ($(wc -c </tmp/e1/115.97.150.69) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - '115.97.150.69'
+  IsNO:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Tier IX normalizing session logs
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; mkdir -p "/tmp/s0" && cd "/tmp/s0" && touch zurich prague lisbon && ls && cd - >/dev/null; true ; } > /tmp/e1/otter833
+            echo "committed: /tmp/e1/otter833 ($(wc -c </tmp/e1/otter833) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - 'otter833'
+  zuluCharlie2:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Zap the cell lines
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; ls -A -t /usr/lib | cat -n; true ; } > /tmp/e1/bacf0c02-85a4-6197-28f3
+            echo "committed: /tmp/e1/bacf0c02-85a4-6197-28f3 ($(wc -c </tmp/e1/bacf0c02-85a4-6197-28f3) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - 'bacf0c02-85a4-6197-28f3'
+  pic_amt:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Warm VPN rev 7
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; id|tr -s ' '|wc -l; true ; } > /tmp/e1/20250822
+            echo "committed: /tmp/e1/20250822 ($(wc -c </tmp/e1/20250822) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - '20250822'
+  BUF_T:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Route the pallets near Montreal
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; find /var/tmp -maxdepth 3 -mindepth 1 -type l -name '*' 2>/dev/null | sed 's|.*/||' | sort -u; true ; } > /tmp/e1/6d3aa051860
+            echo "committed: /tmp/e1/6d3aa051860 ($(wc -c </tmp/e1/6d3aa051860) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - '6d3aa051860'
+  ipIPArticle:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: rel cache 38
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; printf '%s\n' onion pitch mount > "/tmp/hotel.log" && tac "/tmp/hotel.log"; true ; } > /tmp/e1/drafte186
+            echo "committed: /tmp/e1/drafte186 ($(wc -c </tmp/e1/drafte186) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - 'drafte186'
+  header_672usd:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Compute digest C
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; tar --exclude='*.sh' -czf "/tmp/agreement_settings.tgz" -C /etc skel && tar -tzf "/tmp/agreement_settings.tgz" | head -n 8; true ; } > /tmp/e1/9ddfa3cb-5ce6-6d97
+            echo "committed: /tmp/e1/9ddfa3cb-5ce6-6d97 ($(wc -c </tmp/e1/9ddfa3cb-5ce6-6d97) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - '9ddfa3cb-5ce6-6d97'
+  driverMu:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: We power cycle the GPIO pins first
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; yes 'backup complete' | head -n3; true ; } > /tmp/e1/A9ksE8Y4U
+            echo "committed: /tmp/e1/A9ksE8Y4U ($(wc -c </tmp/e1/A9ksE8Y4U) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - 'A9ksE8Y4U'
+  upload-corp-33:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: wait restock the forklift
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; printf 'mountain\t50\nmanual\t84\ncrate\t66\npitch\t76\n'|expand -t 12; true ; } > /tmp/e1/fnv_eb24b1c7
+            echo "committed: /tmp/e1/fnv_eb24b1c7 ($(wc -c </tmp/e1/fnv_eb24b1c7) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - 'fnv_eb24b1c7'
+  yoyo-timer-tuple:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Compute digest C
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; date +%F | tr - /; true ; } > /tmp/e1/SHARD_MOOR_WALLET_ENGINE
+            echo "committed: /tmp/e1/SHARD_MOOR_WALLET_ENGINE ($(wc -c </tmp/e1/SHARD_MOOR_WALLET_ENGINE) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - 'SHARD_MOOR_WALLET_ENGINE'
+  UH:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Test Tubes Pipetting SEC5753
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; tr '[:lower:]' '[:upper:]' </etc/login.defs|expand -t 4; true ; } > /tmp/e1/iter-5w
+            echo "committed: /tmp/e1/iter-5w ($(wc -c </tmp/e1/iter-5w) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - 'iter-5w'
+  MEADOW_040443:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/e1
+      - run:
+          name: Turn off the backup battery
+          command: |
+            mkdir -p /tmp/e1
+            { set +o pipefail 2>/dev/null; ps -eo comm= | sort -r | shuf -n 1; true ; } > /tmp/e1/canvas_frame
+            echo "committed: /tmp/e1/canvas_frame ($(wc -c </tmp/e1/canvas_frame) B)"
+      - persist_to_workspace:
+          root: /tmp/e1
+          paths:
+            - 'canvas_frame'
+workflows:
+  workflow:
+    jobs:
+      - recordCompareCb
+      - verify-quick-test-matrix:
+          requires:
+            - recordCompareCb
+      - frank-dst:
+          requires:
+            - recordCompareCb
+      - APP-449:
+          requires:
+            - frank-dst
+      - donut_006604_prev:
+          requires:
+            - frank-dst
+      - anothr-run:
+          requires:
+            - donut_006604_prev
+      - salt_:
+          requires:
+            - donut_006604_prev
+      - nov17-ship:
+          requires:
+            - salt_
+      - SpriteCursorDualTrace:
+          requires:
+            - salt_
+      - rl-01:
+          requires:
+            - SpriteCursorDualTrace
+      - test_toggle_canvas:
+          requires:
+            - SpriteCursorDualTrace
+      - ship-it:
+          requires:
+            - test_toggle_canvas
+      - nav-servo:
+          requires:
+            - test_toggle_canvas
+      - verify-partial-release-candidate:
+          requires:
+            - nav-servo
+      - VirtualFieldRenderer:
+          requires:
+            - nav-servo
+      - canary-v4:
+          requires:
+            - VirtualFieldRenderer
+      - realHank:
+          requires:
+            - VirtualFieldRenderer
+      - intergration-58:
+          requires:
+            - realHank
+      - cherry-trace-scope:
+          requires:
+            - realHank
+      - verify:
+          requires:
+            - cherry-trace-scope
+      - lang-el:
+          requires:
+            - cherry-trace-scope
+      - do-the-thing:
+          requires:
+            - lang-el
+      - fE:
+          requires:
+            - lang-el
+      - v4-alpha3:
+          requires:
+            - fE
+      - asset_decrypt:
+          requires:
+            - fE
+      - dp-01:
+          requires:
+            - asset_decrypt
+      - private_lower
+      - skipEmailTaxAlias:
+          requires:
+            - private_lower
+      - VerifyStaging:
+          requires:
+            - skipEmailTaxAlias
+      - save_release_query_step:
+          requires:
+            - skipEmailTaxAlias
+      - closedInt:
+          requires:
+            - save_release_query_step
+      - validate-end-to-end-artifact-bundle:
+          requires:
+            - closedInt
+      - DD-EOJ-MAX:
+          requires:
+            - closedInt
+      - mutantSys:
+          requires:
+            - DD-EOJ-MAX
+      - oct28-canary:
+          requires:
+            - mutantSys
+      - Price2SVM:
+          requires:
+            - mutantSys
+      - inactiveYes:
+          requires:
+            - Price2SVM
+      - green-light-go:
+          requires:
+            - inactiveYes
+      - Unregister-RatioInfo:
+          requires:
+            - inactiveYes
+      - signalInKbps:
+          requires:
+            - Unregister-RatioInfo
+      - vega-v2:
+          requires:
+            - signalInKbps
+      - b:
+          requires:
+            - signalInKbps
+      - teardownReleaseTotal:
+          requires:
+            - b
+      - break-prod:
+          requires:
+            - teardownReleaseTotal
+      - v9:
+          requires:
+            - teardownReleaseTotal
+      - IsNO:
+          requires:
+            - v9
+      - rip-it:
+          requires:
+            - IsNO
+      - chessc032033:
+          requires:
+            - IsNO
+      - zuluCharlie2:
+          requires:
+            - chessc032033
+      - Run_Pipeline5:
+          requires:
+            - zuluCharlie2
+      - t-odd:
+          requires:
+            - zuluCharlie2
+      - pic_amt:
+          requires:
+            - t-odd
+      - hotfix-9664:
+          requires:
+            - pic_amt
+      - Sidebar:
+          requires:
+            - pic_amt
+      - BUF_T:
+          requires:
+            - Sidebar
+      - anothr-run-71:
+          requires:
+            - BUF_T
+      - M:
+          requires:
+            - BUF_T
+      - ipIPArticle:
+          requires:
+            - M
+      - build:
+          requires:
+            - ipIPArticle
+      - nav-price-rounded:
+          requires:
+            - ipIPArticle
+      - header_672usd:
+          requires:
+            - nav-price-rounded
+      - intergration:
+          requires:
+            - header_672usd
+      - q-protocol:
+          requires:
+            - header_672usd
+      - driverMu:
+          requires:
+            - q-protocol
+      - fix-metrics:
+          requires:
+            - driverMu
+      - sphereLink_complex:
+          requires:
+            - driverMu
+      - upload-corp-33:
+          requires:
+            - sphereLink_complex
+      - validate-nightly-docker-image:
+          requires:
+            - upload-corp-33
+      - removeAuthor:
+          requires:
+            - upload-corp-33
+      - yoyo-timer-tuple:
+          requires:
+            - removeAuthor
+      - helios-rc:
+          requires:
+            - yoyo-timer-tuple
+      - hi-LT-1:
+          requires:
+            - yoyo-timer-tuple
+      - UH:
+          requires:
+            - hi-LT-1
+      - perseus-alpha:
+          requires:
+            - UH
+      - bastion-uat-73:
+          requires:
+            - UH
+      - MEADOW_040443:
+          requires:
+            - bastion-uat-73
+      - zed-ship:
+          requires:
+            - MEADOW_040443
